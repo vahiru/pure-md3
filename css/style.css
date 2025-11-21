@@ -50,7 +50,8 @@ body.rail-collapsed .nav-text, body.rail-collapsed .logo-text { display: none; }
  * 5. Hero Section
  */
 .hero-section {
-  background-color: var(--md-sys-color-surface-container-high);
+  background-color: var(--md-sys-color-surface-container); /* 强制使用动态变量 */
+  color: var(--md-sys-color-on-surface-variant); /* 确保文字颜色适配 */
   border-radius: 32px;
   padding: 64px 48px;
   margin-bottom: 48px;
@@ -58,6 +59,7 @@ body.rail-collapsed .nav-text, body.rail-collapsed .logo-text { display: none; }
   justify-content: space-between;
   align-items: center;
   min-height: 300px;
+  border: 1px solid var(--md-sys-color-outline-variant, rgba(255,255,255,0.1)); /* 新增边框 */
 }
 .hero-content { flex: 1; }
 .hero-visual { margin-left: 32px; }
