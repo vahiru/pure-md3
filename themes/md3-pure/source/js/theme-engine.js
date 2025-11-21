@@ -22,6 +22,13 @@ function updateTheme(sourceColor, mode) {
   const scheme = isDark ? theme.schemes.dark : theme.schemes.light;
   const surface = hexFromArgb(scheme.surface);
   document.body.style.setProperty('--md-sys-color-surface', surface);
+  // --- BUG FIX: Explicitly set surface-container and on-surface-variant ---
+  const surfaceContainer = hexFromArgb(scheme.surfaceVariant);
+  document.body.style.setProperty('--md-sys-color-surface-container', surfaceContainer);
+  
+  const onSurfaceVariant = hexFromArgb(scheme.onSurfaceVariant);
+  document.body.style.setProperty('--md-sys-color-on-surface-variant', onSurfaceVariant);
+  // --- End of Bug Fix ---
   // --- End of Bug Fix ---
 
   document.body.classList.toggle('dark-theme', isDark);
