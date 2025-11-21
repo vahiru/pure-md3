@@ -1,44 +1,23 @@
-<%- partial('_partial/nav-rail') %>
-<main>
-  <h1><%= page.archive ? page.title : 'Archives' %></h1>
-
+<div class="archive-container">
+  <h1 class="archive-title-main">Archives</h1>
+  <p class="archive-total-count"><%= site.posts.length %> posts in total.</p>
+  
+  <div class="archive-list">
   <% 
-    const years = {};
-    page.posts.each(post => {
-      const year = post.date.year();
-      if (!years[year]) {
-        years[year] = [];
-      }
-      years[year].push(post);
-    });
-    const sortedYears = Object.keys(years).sort((a, b) => b - a);
+    let lastYear = 0;
+    site.posts.sort('date', 'desc').forEach(post => { 
+      const currentYear = date(post.date, 'YYYY');
+      if (lastYear !== currentYear) {
+        lastYear = currentYear;
   %>
-
-  <nav class="year-nav">
-    <% sortedYears.forEach(year => { %>
-      <a href="#year-<%= year %>"><%= year %></a>
-    <% }); %>
-  </nav>
-
-  <% sortedYears.forEach(year => { %>
-    <section id="year-<%= year %>" class="archive-year">
-      <h2><%= year %></h2>
-      <div class="post-grid">
-        <% years[year].forEach(post => { %>
-          <md-elevated-card class="post-card">
-            <h2><a href="<%- url_for(post.path) %>"><%= post.title %></a></h2>
-            <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
-            <p><%= post.excerpt %></p>
-          </md-elevated-card>
-        <% }); %>
-      </div>
-    </section>
+        <h2 class="archive-year-header"><%= currentYear %></h2>
+  <% 
+      }
+  %>
+      <a href="<%- url_for(post.path) %>" class="archive-item">
+        <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'MM-DD') %></time>
+        <span><%= post.title %></span>
+      </a>
   <% }); %>
-
-  <% if (page.total > 1){ %>
-    <nav class="pagination">
-      <%- paginator() %>
-    </nav>
-  <% } %>
-</main>
-<%- partial('_partial/footer') %>
+  </div>
+</div>

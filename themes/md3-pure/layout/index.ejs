@@ -1,30 +1,37 @@
 <div class="posts-grid">
   <% page.posts.forEach(function(post){ %>
-    <md-elevated-card
-      class="post-card"
-      style="background-color: var(--md-sys-color-surface-container);"
-    >
+    <md-elevated-card class="post-card-enhanced">
+
+      <% if (post.cover || (post.photos && post.photos.length)) { %>
+        <img class="card-cover" src="<%- url_for(post.cover || post.photos[0]) %>" alt="<%= post.title %> cover">
+      <% } %>
+      
       <div class="card-content">
-        <h2 class="mdc-typography--headline6" style="color: var(--md-sys-color-primary);">
-          <a href="<%- url_for(post.path) %>" style="color: inherit; text-decoration: none;">
-            <%= post.title %>
-          </a>
+        <h2 class="card-title-enhanced">
+          <a href="<%- url_for(post.path) %>"><%= post.title %></a>
         </h2>
-        <time datetime="<%= date_xml(post.date) %>" class="mdc-typography--body2" style="color: var(--md-sys-color-on-surface-variant);">
+
+        <time datetime="<%= date_xml(post.date) %>" class="card-meta">
           <%= date(post.date, 'YYYY-MM-DD') %>
         </time>
-        <div class="post-excerpt mdc-typography--body1">
+
+        <div class="post-excerpt">
           <% if (post.excerpt && post.excerpt.length > 0) { %>
             <%- post.excerpt %>
           <% } else if (post.content) { %>
             <%- strip_html(post.content).substring(0, 150) + '...' %>
           <% } %>
         </div>
-        <div class="card-actions">
-          <a href="<%- url_for(post.path) %>">
-            <md-text-button>阅读更多</md-text-button>
-          </a>
-        </div>
+
+        <% if (post.tags && post.tags.length > 0) { %>
+          <div class="tags-container">
+            <% post.tags.each(function(tag) { %>
+              <a href="<%- url_for(tag.path) %>" class="tag-chip">
+                #<%= tag.name %>
+              </a>
+            <% }); %>
+          </div>
+        <% } %>
       </div>
     </md-elevated-card>
   <% }); %>

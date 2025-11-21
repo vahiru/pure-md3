@@ -1,12 +1,3 @@
-<%
-// Default menu items if not configured
-const menu = theme.menu || {
-  'Home': { path: '/', icon: 'home' },
-  'Archives': { path: '/archives', icon: 'archive' },
-  'Categories': { path: '/categories', icon: 'category' },
-  'Tags': { path: '/tags', icon: 'tag' }
-};
-%>
 <div class="nav-header">
   <md-icon-button id="menu-toggle">
     <md-icon>menu</md-icon>
@@ -15,13 +6,15 @@ const menu = theme.menu || {
 </div>
 
 <div class="nav-list">
-  <% 
-  const menu = theme.menu || {
+  <%
+  const menuItems = theme.menu || { // 已将 'menu' 重命名为 'menuItems'
     'Home': { path: '/', icon: 'home' },
     'Archives': { path: '/archives', icon: 'archive' },
+    'Categories': { path: '/categories', icon: 'category' }, // 恢复默认的 Categories
+    'Tags': { path: '/tags', icon: 'tag' } // 恢复默认的 Tags
   };
-  for (let name in menu){ 
-    const item = menu[name];
+  for (let name in menuItems){ // 循环遍历 menuItems
+    const item = menuItems[name];
   %>
     <a href="<%- url_for(item.path || item) %>" class="nav-link <% if (is_current(item.path)) { %>active<% } %>">
       <md-icon><%= item.icon || 'article' %></md-icon>
