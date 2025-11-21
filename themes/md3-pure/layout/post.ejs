@@ -1,0 +1,28 @@
+<article>
+  <md-elevated-card class="post-card">
+    <div class="card-content">
+      <h1 class="article-title"><%= page.title %></h1>
+
+      <div class="article-meta">
+        <time datetime="<%= date_xml(page.date) %>">
+          <%= date(page.date, 'YYYY-MM-DD') %>
+        </time>
+        <% if (page.categories && page.categories.length){ %>
+          <span> in </span>
+          <%- list_categories(page.categories, {show_count: false, style: 'none', separator: ', '}) %>
+        <% } %>
+      </div>
+
+      <div class="article-content">
+        <%- page.content %>
+      </div>
+
+      <% if (page.tags && page.tags.length){ %>
+        <div class="article-tags">
+          <span>Tags: </span>
+          <%- list_tags(page.tags, {show_count: false, style: 'none'}) %>
+        </div>
+      <% } %>
+    </div>
+  </md-elevated-card>
+</article>

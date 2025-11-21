@@ -1,0 +1,42 @@
+<div class="posts-grid">
+  <% page.posts.forEach(function(post){ %>
+    <md-elevated-card
+      class="post-card"
+      style="background-color: var(--md-sys-color-surface-container);"
+    >
+      <div class="card-content">
+        <h2 class="mdc-typography--headline6" style="color: var(--md-sys-color-primary);">
+          <a href="<%- url_for(post.path) %>" style="color: inherit; text-decoration: none;">
+            <%= post.title %>
+          </a>
+        </h2>
+        <time datetime="<%= date_xml(post.date) %>" class="mdc-typography--body2" style="color: var(--md-sys-color-on-surface-variant);">
+          <%= date(post.date, 'YYYY-MM-DD') %>
+        </time>
+        <div class="post-excerpt mdc-typography--body1">
+          <% if (post.excerpt && post.excerpt.length > 0) { %>
+            <%- post.excerpt %>
+          <% } else if (post.content) { %>
+            <%- strip_html(post.content).substring(0, 150) + '...' %>
+          <% } %>
+        </div>
+        <div class="card-actions">
+          <a href="<%- url_for(post.path) %>">
+            <md-text-button>阅读更多</md-text-button>
+          </a>
+        </div>
+      </div>
+    </md-elevated-card>
+  <% }); %>
+</div>
+
+<%# Pagination %>
+<% if (page.total > 1) { %>
+  <div class="pagination">
+    <%- paginator({
+      prev_text: '<md-icon>chevron_left</md-icon> Previous',
+      next_text: 'Next <md-icon>chevron_right</md-icon>',
+      escape: false
+    }) %>
+  </div>
+<% } %>

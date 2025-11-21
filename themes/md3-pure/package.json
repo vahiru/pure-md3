@@ -1,0 +1,18 @@
+{
+  "name": "hexo-theme-md3-pure",
+  "version": "0.1.0",
+  "description": "一个简洁的 Hexo 主题，遵循 Material Design 3 规范。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hexo",
+    "theme",
+    "material design 3",
+    "md3",
+    "pure"
+  ],
+  "author": "Your Name <your_email@example.com>",
+  "license": "MIT"
+}

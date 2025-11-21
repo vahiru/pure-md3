@@ -1,0 +1,63 @@
+# Hexo MD3 Pure Theme Configuration
+
+# ------------------------------------
+# Basic Settings
+# ------------------------------------
+
+# Theme name
+name: MD3 Pure
+title: MD3 Pure
+
+# Dark mode
+# auto | dark | light
+# dark_mode: auto
+
+# ------------------------------------
+# Header
+# ------------------------------------
+# avatar: /img/avatar.png
+# title: Your Blog Title
+# subtitle: Your Blog Subtitle
+
+# Author info
+author_info:
+  name: Your Name
+  avatar: /img/avatar.png
+  
+# ------------------------------------
+# Navigation
+# ------------------------------------
+# menu:
+#   Home: /
+#   Archives: /archives
+#   Categories: /categories
+#   Tags: /tags
+#   About: /about
+
+# ------------------------------------
+# Footer
+# ------------------------------------
+# copyright: '&copy; 2025 Your Name'
+# powered_by: true
+
+# ------------------------------------
+# Comments
+# ------------------------------------
+# disqus_shortname:
+# waline:
+#   serverURL:
+#   path: window.location.pathname
+
+# ------------------------------------
+# Analytics
+# ------------------------------------
+# google_analytics:
+# baidu_analytics:
+
+# ------------------------------------
+# Custom CSS/JS
+# ------------------------------------
+# custom_css:
+#   - /css/custom.css
+# custom_js:
+#   - /js/custom.js

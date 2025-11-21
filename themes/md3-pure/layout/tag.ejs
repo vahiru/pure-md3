@@ -1,0 +1,21 @@
+<%- partial('_partial/nav-rail') %>
+<main>
+  <h1><%= page.tag %></h1>
+
+  <section class="post-grid">
+    <% page.posts.each(function(post){ %>
+      <md-elevated-card class="post-card">
+        <h2><a href="<%- url_for(post.path) %>"><%= post.title %></a></h2>
+        <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+        <p><%= post.excerpt %></p>
+      </md-elevated-card>
+    <% }); %>
+  </section>
+
+  <% if (page.total > 1){ %>
+    <nav class="pagination">
+      <%- paginator() %>
+    </nav>
+  <% } %>
+</main>
+<%- partial('_partial/footer') %>

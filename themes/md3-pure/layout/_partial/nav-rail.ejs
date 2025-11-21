@@ -1,0 +1,31 @@
+<%
+// Default menu items if not configured
+const menu = theme.menu || {
+  'Home': { path: '/', icon: 'home' },
+  'Archives': { path: '/archives', icon: 'archive' },
+  'Categories': { path: '/categories', icon: 'category' },
+  'Tags': { path: '/tags', icon: 'tag' }
+};
+%>
+<div class="nav-header">
+  <md-icon-button id="menu-toggle">
+    <md-icon>menu</md-icon>
+  </md-icon-button>
+  <span class="logo-text"><%= config.title %></span>
+</div>
+
+<div class="nav-list">
+  <% 
+  const menu = theme.menu || {
+    'Home': { path: '/', icon: 'home' },
+    'Archives': { path: '/archives', icon: 'archive' },
+  };
+  for (let name in menu){ 
+    const item = menu[name];
+  %>
+    <a href="<%- url_for(item.path || item) %>" class="nav-link <% if (is_current(item.path)) { %>active<% } %>">
+      <md-icon><%= item.icon || 'article' %></md-icon>
+      <span class="nav-text"><%= name %></span>
+    </a>
+  <% } %>
+</div>

@@ -1,0 +1,106 @@
+/*
+ * 1. Global Resets & Base Styles
+ */
+body {
+  margin: 0;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-family: 'Roboto', sans-serif;
+}
+
+a { text-decoration: none; color: inherit; }
+* { box-sizing: border-box; }
+
+/*
+ * 2. Main App Layout & Cards
+ */
+.app-container { display: flex; min-height: 100vh; }
+.app-container main { flex-grow: 1; padding: 24px; overflow-x: hidden; }
+
+md-elevated-card.post-card {
+  display: block;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: 24px;
+  margin: 0;
+  overflow: hidden;
+}
+.card-content { padding: 24px; }
+.article-title { color: var(--md-sys-color-primary); }
+.article-meta { color: var(--md-sys-color-on-surface-variant); margin: 8px 0 24px; }
+.article-content { line-height: 1.7; }
+
+/*
+ * 3. Sidebar / Navigation Rail
+ */
+aside {
+  width: 300px;
+  flex-shrink: 0;
+  background-color: var(--md-sys-color-surface);
+  border-right: 1px solid var(--md-sys-color-outline);
+  padding: 16px 12px;
+  overflow: hidden; /* Important for hiding text during collapse */
+  transition: width 0.3s cubic-bezier(0.2, 0.0, 0.0, 1.0);
+}
+
+.nav-header {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 12px;
+  margin-bottom: 12px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 16px;
+  border-radius: 28px;
+  gap: 12px;
+}
+
+.nav-text {
+  white-space: nowrap; /* Prevent text from wrapping */
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.nav-link.active {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+
+/*
+ * 4. Collapsed Rail State
+ */
+body.rail-collapsed aside {
+  width: 80px;
+}
+
+body.rail-collapsed .nav-link {
+  justify-content: center; /* Center the icon */
+  padding: 0; /* Remove padding to help with centering */
+}
+
+body.rail-collapsed .nav-text {
+  opacity: 0;
+  display: none; /* Fully hide and remove from layout */
+}
+
+body.rail-collapsed .logo-text {
+  display: none; /* Hide the logo text as well */
+}
+
+/*
+ * 5. Icon & Grid Definitions
+ */
+md-icon {
+  font-family: 'Material Symbols Rounded', sans-serif;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  align-content: start;
+}
