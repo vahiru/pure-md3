@@ -1,4 +1,19 @@
-<div class="posts-grid">
+<% if (page.current === 1 && theme.hero && theme.hero.enabled) { %>
+  <header class="hero-section">
+    <div class="hero-content">
+      <h1 class="display-large"><%= theme.hero.title %></h1>
+      <p class="headline-small"><%= theme.hero.subtitle %></p>
+      <a href="<%= theme.hero.btn_link %>" class="hero-btn">
+        <%= theme.hero.btn_text %>
+      </a>
+    </div>
+    <div class="hero-visual">
+      <md-icon style="font-size: 120px; color: var(--md-sys-color-primary);">palette</md-icon>
+    </div>
+  </header>
+<% } %>
+
+<div class="posts-grid" id="posts-anchor"> <%# Anchor for the hero button %>
   <% page.posts.forEach(function(post){ %>
     <md-elevated-card class="post-card-enhanced">
 

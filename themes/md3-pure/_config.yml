@@ -61,3 +61,10 @@ author_info:
 #   - /css/custom.css
 # custom_js:
 #   - /js/custom.js
+# Hero Section (Homepage First Screen)
+hero:
+  enabled: true
+  title: "Vahiru's Blog"
+  subtitle: "猫猫的自留地"
+  btn_text: "Start Reading"
+  btn_link: "#posts-anchor"

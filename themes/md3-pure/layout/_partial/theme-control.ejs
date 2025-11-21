@@ -1,0 +1,26 @@
+<md-dialog id="theme-dialog">
+  <div slot="headline">Customize theme</div>
+  <div slot="content" class="theme-dialog-content">
+    
+    <div class="setting-row">
+      <label for="source-color">Source Color</label>
+      <div class="color-picker-wrapper">
+        <input type="color" id="source-color" value="#6750A4">
+        <span id="source-color-value">#6750A4</span>
+      </div>
+    </div>
+
+    <div class="setting-row">
+      <label>Dark Mode</label>
+      <md-segmented-button-set id="dark-mode-toggle">
+        <md-segmented-button value="light" label="Light"></md-segmented-button>
+        <md-segmented-button value="dark" label="Dark"></md-segmented-button>
+        <md-segmented-button value="auto" label="Auto"></md-segmented-button>
+      </md-segmented-button-set>
+    </div>
+
+  </div>
+  <div slot="actions">
+    <md-text-button onclick="document.getElementById('theme-dialog').close()">Close</md-text-button>
+  </div>
+</md-dialog>

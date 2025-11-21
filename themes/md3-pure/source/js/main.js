@@ -1,14 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Select the menu button within the nav rail header
-  const toggleButton = document.querySelector('.nav-rail-header md-icon-button');
+  // Sidebar toggle logic
+  const toggleBtn = document.getElementById('menu-toggle');
   const body = document.body;
-
-  if (toggleButton && body) {
-    toggleButton.addEventListener('click', () => {
-      // Toggle the 'rail-collapsed' class on the body element
+  if (toggleBtn && body) {
+    toggleBtn.addEventListener('click', () => {
       body.classList.toggle('rail-collapsed');
     });
   } else {
-    console.error('Sidebar toggle button not found.');
+    console.error('Sidebar toggle button (#menu-toggle) not found.');
   }
 });
